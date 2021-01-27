@@ -4,7 +4,7 @@
 % Student Number: 24099822
 % Date: 01/18/2021
 % ---------------------------------------- %
-function [V1, lambda1, V2, lambda2] = BigEig(A)
+function [V1, lambda1, V2, lambda2] = BigEig(A, threshold)
     sz = size(A);
     if sz(1) ~= sz(2)
         fprintf('Matrix Input is Not Square\nQuitting...\n\n')
@@ -14,7 +14,6 @@ function [V1, lambda1, V2, lambda2] = BigEig(A)
     end
     % Find largest Eigen value through itteration
     V10 = rand(N,1);
-    threshold = 1E-6;
     rErr = threshold+1;
     while rErr > threshold
         V10 = V10/norm(V10);

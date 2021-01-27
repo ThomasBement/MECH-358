@@ -17,11 +17,11 @@ function [z, x] = SubSol(P, L, U, b, N)
     end
     x = zeros(N,1);
     x(N) = z(N)/U(N,N);
-    for r = N:-1:2
+    for r = (N-1):-1:1
         sum = 0;
-        for c = (r-1):-1:1
+        for c = N:-1:(r+1)
             sum = sum + U(r,c)*x(c);
         end
-        x(r)=(res(r)-sum)/U(r,r);
+        x(r)=(z(r)-sum)/U(r,r);
     end
 end
